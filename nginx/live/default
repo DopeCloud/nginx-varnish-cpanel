@@ -1,0 +1,16 @@
+server {
+        listen 80 default_server;
+        root /var/www/html;
+        index index.html;
+        server_name localhost;
+        limit_conn max 100;
+        limit_req zone=one burst=10 nodelay;
+
+        location / {
+          access_log /hostdata/default/logs/access.log main;
+          error_log  /hostdata/default/logs/error.log;
+          try_files  $uri $uri/ =404;
+          #include   /nginx/blacklist/*;
+        }
+        error_page 503 /angry.html;
+}
