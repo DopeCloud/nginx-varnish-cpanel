@@ -5,7 +5,7 @@ import std;
 import directors;
 
 backend server1 {
-  .host = "54.36.100.120";
+  .host = "127.0.0.1";
   .port = "80";
   .max_connections = 300;
   .probe = {
