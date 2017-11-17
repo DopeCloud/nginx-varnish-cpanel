@@ -1,8 +1,6 @@
 server {
         listen 80;
         server_name dopehosting.net www.dopehosting.net;
-        limit_conn max 100;
-        limit_req zone=one burst=10 nodelay;
 
         location / {
           resolver 8.8.8.8;
