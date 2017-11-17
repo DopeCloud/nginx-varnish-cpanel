@@ -1,5 +1,8 @@
 # Nginx-Varnish-cPanel
 
+And why 3 webservers and not 2? 
+- Because Varnish doesn't support SSL. SO, Well leave the Apache as the backend because cPanel will create all vHost configs for apache and we will setup Varnish as mid web server to cache website contents, and we will use nginx as primary webserver which supports both ssl and non ssl. Nginx will not be used just for Primary server or ssl, But will also be used for Security reasons and ModSecurity will be used. Because we can't leave Modsecurity ON when you have this configuration. example if modsecurity in cPanel will block a page you will not see the error but varnish will response with a simple page "503 Backend failed".
+
 # TO DO.
 
  1 . Compile Nginx From Source.
