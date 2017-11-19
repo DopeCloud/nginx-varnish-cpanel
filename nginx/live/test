@@ -1,6 +1,8 @@
 server {
         listen 80;
         server_name dopehosting.net www.dopehosting.net;
+        limit_conn max 100;
+        limit_req zone=one burst=100 nodelay;
 
         location / {
           resolver 8.8.8.8;
@@ -18,6 +20,8 @@ server {
         status_zone dopehosting.net;
         listen      443 http2;
         server_name dopehosting.net www.dopehosting.net;
+        limit_conn max 100;
+        limit_req zone=one burst=100 nodelay;
 
         add_header X-Content-Type-Options "nosniff" always;
         add_header X-Xss-Protection "1; mode=block";
@@ -68,5 +72,11 @@ server {
         error_page 404 /custom_404.html;
         location = /custom_404.html {
           return http://$server_name;
+        }
+        // in this way you show just content into 'angry.html' you don't redirect to /angry.html
+        error_page 503 /angry.html;
+        location = /angry.html {
+                root /hostdata/default/public_html;
+                internal;
         }
 }
