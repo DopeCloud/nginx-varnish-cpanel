@@ -161,4 +161,9 @@ cd /usr/lib/systemd/system/; wget https://raw.githubusercontent.com/DopeCloud/ng
 systemctl enable nginx.service
 cd /nginx/; rm -Rf *.default
 rm -Rf nginx.conf; wget https://raw.githubusercontent.com/DopeCloud/nginx-varnish-cpanel/master/nginx/nginx.conf
+cd /nginx/live/; wget https://raw.githubusercontent.com/DopeCloud/nginx-varnish-cpanel/master/nginx/live/default
+mkdir -p /var/www/html/logs/
+touch /var/www/html/logs/access.log
+touch /var/www/html/logs/error.log
+service nginx stop
 service nginx start
