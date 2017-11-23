@@ -7,8 +7,8 @@ server {
         limit_req zone=one burst=10 nodelay;
 
         location / {
-          access_log /var/www/html/logs/access.log main;
-          error_log  /var/www/html/logs/error.log;
+          access_log /nginx/logs/host.access.log main;
+          error_log  /nginx/logs/host.error.log;
           try_files  $uri $uri/ =404;
         }
         error_page 503 /angry.html;
