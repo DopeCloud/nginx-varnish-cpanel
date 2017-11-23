@@ -45,3 +45,7 @@ Commands
 As this is just testing because there is no full setup yet and there is no gui but just cli so as of now i've create a beta installation script and i'm currently working with default vhosts config -> `https://github.com/DopeCloud/nginx-varnish-cpanel/blob/master/nginx/live/default`
 
 *Feel free to suggest something or submit a pull req*
+
+
+# How to remove this?!
+Here is no "autoremove" script as of now. so you can shutdown nginx/varnish and change apache non-ssl/ssl ports back to its default. as of varnish you can remove it by just "yum remove varnish" but nginx is compiled from source so it will be a problem to remove it if you don't have too much knowledge. if you have then check out 'install' file to see all dirs which are in use for nginx and remove them
