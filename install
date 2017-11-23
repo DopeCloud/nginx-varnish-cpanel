@@ -3,3 +3,5 @@
 
 yum -y update
 yum -y install git wget zip unzip epel-release nano curl
+yum install pygpgme yum-utils
+curl -s https://packagecloud.io/install/repositories/varnishcache/varnish52/script.rpm.sh | sudo bash
