@@ -4,4 +4,53 @@
 yum -y update
 yum -y install git wget zip unzip epel-release nano curl
 yum install pygpgme yum-utils
+
+# ===================================================================================
+sed -i 's/^apache_port=.*/apache_port=127.0.0.1:7171/' /var/cpanel/cpanel.config
+sed -i 's/^apache_ssl_port=.*/apache_ssl_port=127.0.0.1:7443/' /var/cpanel/cpanel.config
+/usr/local/cpanel/whostmgr/bin/whostmgr2 --updatetweaksettings
+# ===================================================================================
+
+# ===================================================================================
+# ===================================================================================
 curl -s https://packagecloud.io/install/repositories/varnishcache/varnish52/script.rpm.sh | sudo bash
+yum -y install varnish varnish-devel
+service varnish stop
+cd /etc/varnish/; rm -Rf default.vcl; rm -Rf varnish.params
+wget https://raw.githubusercontent.com/DopeCloud/nginx-varnish-cpanel/master/etc/varnish/varnish.params
+wget https://raw.githubusercontent.com/DopeCloud/nginx-varnish-cpanel/master/etc/varnish/default.vcl
+service varnish start
+# ===================================================================================
+# ===================================================================================
+
+# ===================================================================================
+# Nginx
+# ===================================================================================
+mkdir -p /opt/nginx/sources
+mkdir -p /opt/nginx/mods
+mkdir -p /opt/nginx/libs
+chown -R root:root /opt/nginx/sources
+chown -R root:root /opt/nginx/mods
+chown -R root:root /opt/nginx/libs
+yum check-update || sudo yum update -y
+yum groupinstall -y 'Development Tools'
+yum install -y perl perl-devel perl-ExtUtils-Embed libxslt libxslt-devel libxml2 libxml2-devel gd gd-devel GeoIP GeoIP-devel
+yum install zlib zlib-devel -y
+
+cd /opt/nginx/sources; wget 'https://nginx.org/download/nginx-1.9.9.tar.gz'
+tar xf nginx-1.9.9.tar.gz; rm -Rf nginx-1.9.9.tar.gz; mv nginx-1.9.9/ nginx; chown -R root:root nginx/
+# ===================================================================================
+# ===================================================================================
+
+# ===================================================================================
+# ===================================================================================
+cd /opt/nginx/libs/; wget 'https://www.openssl.org/source/openssl-1.1.0g.tar.gz'
+tar xf openssl-1.1.0g.tar.gz; rm -Rf openssl-1.1.0g.tar.gz; mv openssl-1.1.0g/ openssl
+
+cd /opt/nginx/libs/; wget 'https://ftp.pcre.org/pub/pcre/pcre-8.41.tar.gz'
+tar xf pcre-8.41.tar.gz; rm -Rf pcre-8.41.tar.gz; mv pcre* pcre
+
+cd /opt/nginx/libs/; wget 'https://www.zlib.net/zlib-1.2.11.tar.gz'
+tar xf zlib-1.2.11.tar.gz; rm -Rf zlib-1.2.11.tar.gz; mv zlib* zlib
+# ===================================================================================
+# ===================================================================================
