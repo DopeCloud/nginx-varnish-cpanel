@@ -6,7 +6,7 @@ import directors;
 
 backend server1 {
   .host = "127.0.0.1";
-  .port = "8080";
+  .port = "7171";
   .max_connections = 300;
   .probe = {
     #.url = "/"; # short easy way (GET /)
