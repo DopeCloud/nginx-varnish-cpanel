@@ -151,3 +151,11 @@ make -j`nproc`
 make install
 
 sudo useradd --system --home /var/cache/nginx --shell /sbin/nologin --comment "nginx user" --user-group nginx
+mkdir -p /nginx/live
+mkdir -p /nginx/logs
+mkdir -p /nginx/cache
+mkdir -p /nginx/conf.d
+touch /nginx/logs/access.log
+touch /nginx/logs/error.log
+cd /usr/lib/systemd/system/; wget https://raw.githubusercontent.com/DopeCloud/nginx-varnish-cpanel/master/nginx/static/nginx.service
+systemctl enable nginx.service
