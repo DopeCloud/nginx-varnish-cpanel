@@ -1,0 +1,5 @@
+#!/bin/bash
+# FOR as time as you can read this text it means this file is in raw mode. so don't try to use it..
+
+yum -y update
+yum -y install git wget zip unzip epel-release nano curl
