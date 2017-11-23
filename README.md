@@ -24,3 +24,24 @@ Tests are done on CentOS 7.4 And so you should have CentOS 7.4 to use this or if
 
 About resources. 
 This needs +5GB RAM. And a good CPU. (Disk SSD, But isn't problem even if you're on HDD) 
+
+# Try (TESTING ONLY)
+
+First install manually latest `libmaxminddb` and `libmaxminddb-devel` or installation will fail.
+then
+
+1. `cd ~; wget https://raw.githubusercontent.com/DopeCloud/nginx-varnish-cpanel/master/install`
+
+2. `chmod +x ./install; ./install`
+
+3. `nginx -t`
+
+Commands
+
+`service varnish start/stop/restart etc`
+
+`service nginx start/stop/restart etc`
+
+As this is just testing because there is no full setup yet and there is no gui but just cli so as of now i've create a beta installation script and i'm currently working with default vhosts config -> `https://github.com/DopeCloud/nginx-varnish-cpanel/blob/master/nginx/live/default`
+
+*Feel free to suggest something or submit a pull req*
