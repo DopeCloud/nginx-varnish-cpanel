@@ -159,3 +159,4 @@ touch /nginx/logs/access.log
 touch /nginx/logs/error.log
 cd /usr/lib/systemd/system/; wget https://raw.githubusercontent.com/DopeCloud/nginx-varnish-cpanel/master/nginx/static/nginx.service
 systemctl enable nginx.service
+service nginx start
